@@ -17,9 +17,9 @@ class Vendor
   end
 
   def potential_revenue
-    @inventory.sum do |item, quantity|
-      # require "pry"; binding.pry
-      item.price * quantity.to_i
+    @inventory.map do |item, quantity|
+      require "pry"; binding.pry
+      item.price * quantity
     end
   end
 end

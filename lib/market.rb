@@ -24,10 +24,12 @@ class Market
 
   def total_inventory
     total_inventory = Hash.new(0)
-    # require "pry"; binding.pry
     @vendors.each do |vendor|
+      # require "pry"; binding.pry
       vendor.inventory.each do |item, quantity|
-        total_inventory[item] += quantity.to_i
+        vendor.inventory[item] = 0
+        total_inventory[item] += total_inventory[quantity]
+        total_inventory[vendor] = vendor.inventory
       end
     end
     total_inventory
