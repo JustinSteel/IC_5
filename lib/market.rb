@@ -21,4 +21,14 @@ class Market
       vendor.inventory.keys.include?(item)
     end
   end
+
+  def total_inventory
+    total_inventory = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, quantity|
+        total_inventory[item] += quantity
+      end
+    end
+    total_inventory
+  end
 end
